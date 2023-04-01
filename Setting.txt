@@ -1,0 +1,21 @@
+1. Cài đặt scss cho nuxtjs2
+- yarn add --dev sass sass-loader@10
+- yarn add @nuxtjs/style-resources --dev
+
+sau khi chạy xong cấu hình file nuxt.config.js
+
+    css: [
+      '~/assets/style/global.scss',
+    ]
+
+    buildModules: [
+      '@nuxtjs/style-resources',
+    ]
+
+    styleResources: {
+      scss: [
+          '~/assets/style/*.scss',
+      ]
+    }
+
+ở đây ta tạo folder assets/style/global.scss

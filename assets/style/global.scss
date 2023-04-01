@@ -1,0 +1,149 @@
+*{
+  font-size: 16px;
+}
+@media only screen and (max-width: 912px) {
+  * {
+    font-size: 12px !important;
+  }
+}
+
+@for $i from 0 through 20 {
+  .m--#{$i} {
+    margin: $i * 0.25rem;
+  }
+  .m--#{$i}--5 {
+    margin: $i * 0.25rem * 1.5;
+  }
+  .mx--#{$i} {
+    margin-left: $i * 0.25rem;
+    margin-right: $i * 0.25rem;
+  }
+  .mx--#{$i}--5 {
+    margin-left: $i * 0.25rem * 1.5;
+    margin-right: $i * 0.25rem * 1.5;
+  }
+  .my--#{$i} {
+    margin-top: $i * 0.25rem;
+    margin-bottom: $i * 0.25rem;
+  }
+  .my--#{$i}--5 {
+    margin-top: $i * 0.25rem * 1.5;
+    margin-bottom: $i * 0.25rem * 1.5;
+  }
+
+  .mr--#{$i} {
+    margin-right: $i * 0.25rem;
+  }
+  .ml--#{$i} {
+    margin-left: $i * 0.25rem;
+  }
+  .mt--#{$i} {
+    margin-top: $i * 0.25rem;
+  }
+  .mb--#{$i} {
+    margin-bottom: $i * 0.25rem;
+  }
+
+  .p--#{$i} {
+    padding: $i * 0.25rem;
+  }
+  .p--#{$i}--5 {
+    padding: $i * 0.25rem * 1.5;
+  }
+  .px--#{$i} {
+    padding-left: $i * 0.25rem;
+    padding-right: $i * 0.25rem;
+  }
+  .px--#{$i}--5 {
+    padding-left: $i * 0.25rem * 1.5;
+    padding-right: $i * 0.25rem * 1.5;
+  }
+  .py--#{$i} {
+    padding-top: $i * 0.25rem;
+    padding-bottom: $i * 0.25rem;
+  }
+  .py--#{$i}--5 {
+    padding-top: $i * 0.25rem * 1.5;
+    padding-bottom: $i * 0.25rem * 1.5;
+  }
+  .pr--#{$i} {
+    padding-right: $i * 0.25rem;
+  }
+  .pl--#{$i} {
+    padding-left: $i * 0.25rem;
+  }
+  .pt--#{$i} {
+    padding-top: $i * 0.25rem;
+  }
+  .pb--#{$i} {
+    padding-bottom: $i * 0.25rem;
+  }
+
+}
+
+@for $i from 1 through 16{
+  .text--#{$i}{
+    font-size: calc($i/16) * 1rem;
+  }
+  .bra--bl--#{$i}{
+    border-bottom-left-radius: calc($i/16) * 1rem;
+  }
+  .bra--br-#{$i}{
+    border-bottom-right-radius: calc($i/16) * 1rem;
+  }
+  .bra--tl--#{$i}{
+    border-top-left-radius: calc($i/16) * 1rem;
+  }
+  .bra--tr--#{$i}{
+    border-top-right-radius: calc($i/16) * 1rem;
+  }
+  .bra--l--#{$i}{
+    border-top-left-radius: calc($i/16) * 1rem;
+    border-bottom-left-radius: calc($i/16) * 1rem;
+  }
+  .bra--r--#{$i}{
+    border-top-right-radius: calc($i/16) * 1rem;
+    border-bottom-right-radius: calc($i/16) * 1rem;
+  }
+  .bra--#{$i}{
+    border-radius: calc($i/16) * 1rem;
+  }
+}
+
+.font--100 {
+  font-weight: 100 !important;
+}
+
+.font--200 {
+  font-weight: 200 !important;
+}
+
+.font--300 {
+  font-weight: 300 !important;
+}
+
+.font--400 {
+  font-weight: 400 !important;
+}
+
+.font--500 {
+  font-weight: 500 !important;
+}
+
+.font--600 {
+  font-weight: 600 !important;
+}
+
+.font--700 {
+  font-weight: 700 !important;
+}
+
+.font--800 {
+  font-weight: 800 !important;
+}
+
+.font--900 {
+  font-weight: 900 !important;
+}
+
+

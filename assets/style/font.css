@@ -1,0 +1,37 @@
+@font-face {
+  font-family: font-primary-thin;
+  src: url("../font/Font_Gilroy_VH_Full/SVN-Gilroy Thin.otf") format("opentype");
+}
+@font-face {
+  font-family: font-primary-regular;
+  src: url("../font/Font_Gilroy_VH_Full/SVN-Gilroy Regular.otf") format("opentype");
+}
+@font-face {
+  font-family: font-primary-medium;
+  src: url("../font/Font_Gilroy_VH_Full/SVN-Gilroy Medium.otf") format("opentype");
+}
+@font-face {
+  font-family: font-primary-semibold;
+  src: url("../font/Font_Gilroy_VH_Full/SVN-Gilroy SemiBold.otf") format("opentype");
+}
+@font-face {
+  font-family: font-primary-bold;
+  src: url("../font/Font_Gilroy_VH_Full/SVN-Gilroy Bold.otf") format("opentype");
+}
+
+
+.font--thin {
+  font-family: font-primary-thin, sans-serif;
+}
+.font--regular {
+  font-family: font-primary-regular, sans-serif;
+}
+.font--medium {
+  font-family: font-primary-medium, sans-serif;
+}
+.font--semibold {
+  font-family: font-primary-semibold, sans-serif;
+}
+.font--bold {
+  font-family: font-primary-bold, sans-serif;
+}
