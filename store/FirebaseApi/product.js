@@ -1,0 +1,30 @@
+// nuxtjs vuex
+import firebase from "@/plugins/Firebase";
+import {convertDataFirebase} from "@/utils/Firebase/convert";
+
+export const state = () => ({
+  dataProduct: []
+})
+
+export const getters = {
+  _dataProduct: _state => _state.dataProduct
+}
+
+export const mutations = {
+  SET_DATA_PRODUCT(_state, _payload) {
+    _state.dataProduct = _payload
+  }
+}
+
+export const actions = {
+  async getDataProduct({commit}) {
+    try {
+      firebase.database().ref('data-product')
+        .on('value', (snapshot) => {
+        commit('SET_DATA_PRODUCT', convertDataFirebase(Object.values(snapshot.val())))
+      })
+    } catch (error) {
+      console.log(error)
+    }
+  }
+}

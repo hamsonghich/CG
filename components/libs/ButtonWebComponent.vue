@@ -1,20 +1,20 @@
 <template>
-  <div>
+
     <button
       class="btn-web-component d-flex py--1--5 px--2--5 font--regular"
       :class="[optionStyle, { 'br--50': br50}, { 'br--3': br3}]"
       @click="fnClick"
       :disabled="isDisabled"
     >
-        <span :class="textSize" class="mr--1" v-if="iconPrev">
+        <span :class="textSize"  v-if="iconPrev">
           <i :class="[textSizeIcon, iconPrev]"></i>
         </span>
-      <span :class="textSize" class="text-content"> {{textContent}}</span>
-      <span :class="textSize" class="ml--1" v-if="iconNext">
+      <span v-if="textContent !== '.'" :class="textSize" class="text-content  mx--1"> {{textContent}}</span>
+      <span :class="textSize"  v-if="iconNext">
          <i :class="[textSizeIcon, iconNext]"></i>
         </span>
     </button>
-  </div>
+
 </template>
 
 <script>

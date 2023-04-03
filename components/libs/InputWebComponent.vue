@@ -17,8 +17,9 @@
         :placeholder="placeholder || 'placeholder'"
         @keyup="fnKeyUp"
         @change="fnChange"
-        v-model="value"
+        v-model="valueInput"
         :state="fnState"
+        :disabled="isDisabled"
       ></b-form-input>
 
       <b-input-group-append v-if="this.appendOption" class="append-input">
@@ -91,6 +92,14 @@ export default {
       type: String,
       required: false,
       default: 'text'
+    },
+    valueProp:{
+      type: String,
+      required: false,
+    },
+    isDisabled:{
+      type: Boolean,
+      default: false
     }
 
   },
@@ -98,13 +107,16 @@ export default {
     return {
       toggleEye: true,
       activeInput: false,
-      value: '',
+      valueInput: '',
       showError: false,
       counter: 1
     }
   },
   created() {
     this.optionInput === 'password' ? this.type = 'password' : this.type = 'text';
+    if(this.valueProp){
+      this.valueInput = this.valueProp
+    }
   },
   computed: {
     fnState() {
@@ -137,10 +149,20 @@ export default {
       }
     },
     fnSearch() {
-      this.$emit('valueInput', this.value)
+      this.$emit('valueInputEmit', this.valueInput)
     },
     fnChange(){
-      this.$emit('valueInput', this.value)
+      this.$emit('valueInputEmit', this.valueInput)
+    }
+  },
+  watch:{
+    'valueInput': function (newValue){
+      console.log('newvalue', newValue)
+      this.valueInput = newValue
+      this.$emit('valueInputEmit', newValue)
+    },
+    'valueProp': function (newValue){
+      this.valueInput =  newValue
     }
   }
 }

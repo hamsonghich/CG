@@ -43,12 +43,15 @@
 
         </div>
         <div v-if="list">
-          <b-card v-for="(item, index) in list" :key="index">
-            <i class="fa-solid fa-minus mr--1"></i>
-            <nuxt-link :to="/product-sub/+ item.link">
-                 <span class="text--14 font--medium">
-                   {{ item.name }} </span>
-            </nuxt-link>
+          <b-card v-for="(itemC, indexC) in list" :key="indexC">
+            <b-button v-b-toggle="'collapse-child-' + indexC" class="m-1">{{itemC.name}}</b-button>
+
+            <!-- Element to collapse -->
+            <b-collapse :id="`collapse-child-${indexC}`">
+              <b-card  v-for="item in itemC.list">
+                    {{item}}
+              </b-card>
+            </b-collapse>
           </b-card>
         </div>
 
@@ -97,6 +100,7 @@ export default {
 
 .wrapper-collapse {
   width: 100%;
+
   .not-collapsed {
     font-weight: 400;
 

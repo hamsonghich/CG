@@ -29,14 +29,18 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    '~/plugins/InputWebComponent.js',
-    '~/plugins/PaginationWebComponent.js',
-    '~/plugins/AutocompleteWebComponent.js',
-    '~/plugins/vue-simple-suggest',
-    '~/plugins/AccordionWebComponent.js',
-    '~/plugins/ButtonWebComponent.js',
-    '~/plugins/SelectWebComponent.js',
-    '~/plugins/StarWebComponent.js',
+    '~/plugins/Firebase/index.js',
+    '~/plugins/Component/InputWebComponent.js',
+    '~/plugins/Component/PaginationWebComponent.js',
+    '~/plugins/Component/AutocompleteWebComponent.js',
+    '~/plugins/Component/vue-simple-suggest',
+    '~/plugins/Component/AccordionWebComponent.js',
+    '~/plugins/Component/ButtonWebComponent.js',
+    '~/plugins/Component/SelectWebComponent.js',
+    '~/plugins/Component/StarWebComponent.js',
+    '~/plugins/Component/CardDetailWebComponent.js',
+    '~/plugins/Component/ModalYNWebComponent.js',
+    '~/plugins/Component/AccordionAdminWebComponent.js',
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
