@@ -140,6 +140,9 @@ i {
 .option-main {
   background-color: $color-text-admin;
 }
+.option-main-pro {
+  background-color: #0b1119;
+}
 .option-cancel {
   background-color: $color-gray;
 }

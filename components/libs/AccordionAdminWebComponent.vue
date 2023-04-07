@@ -17,8 +17,19 @@
                       class="color-text-warning font--semibold ml--10">{{ keyId }}</span>
               </nuxt-link>
 
+
               <div class="d-flex align-items-center">
-                <div class="wrapper-btn-edit-delete-level-1 mr--5">
+                <div class="wrapper-btn-edit-delete-level-1 mr--5 d-flex">
+
+                  <button class="btn-icon d-flex" @click="sortNameProductLevel2(keyId)">
+                    <i class="fa-solid fa-arrow-up-9-1 color-text-admin text--10"></i>
+                    <i class="fa-light fa-signature color-text-admin text--10"></i>
+                  </button>
+                  <button class="btn-icon d-flex mr--3" @click="sortDateProductLevel2(keyId)">
+                    <i class="fa-solid fa-arrow-up-9-1 color-text-admin text--10"></i>
+                    <i class="fa-regular fa-calendar-days color-text-admin text--10"></i>
+                  </button>
+
                   <!--                  button add level 2-->
                   <button class="btn-icon" @click="openModalAddLevel2()">
                     <i class="fa-solid fa-circle-plus  color-text-primary text--13 font--medium"></i>
@@ -75,12 +86,25 @@
                         @click="getKeyProductLevel2(itemC.key)"
               >
                 <i class="fa-regular fa-folder-open mr--2 text--12 color-primary"></i>
-                {{ itemC.name }}
+                <div style="position:relative;">{{ itemC.name }} <span style="position: absolute; top: -6px;
+                        right: -15px; font-size: 10px !important;" class="count text--8">{{ itemC['product-details']?.length }}</span></div>
                 <span style="font-size: calc(10/16 * 1rem)"
                       class="color-text-warning font--semibold ml--10">{{ itemC.key }}</span>
               </b-button>
+
+
               <div class="d-flex align-items-center mr--7">
-                <div class="d-flex wrapper-btn-edit-delete-level-2 mr--10">
+                <div class="d-flex align-items-center wrapper-btn-edit-delete-level-2 mr--10">
+<!--dang sua-->
+                  <button class="btn-icon d-flex" @click="sortNameProductLevel3(itemC.key)">
+                    <i class="fa-solid fa-arrow-up-9-1 color-text-admin text--10"></i>
+                    <i class="fa-light fa-signature color-text-admin text--10"></i>
+                  </button>
+                  <button class="btn-icon d-flex mr--3" @click="sortDateProductLevel3(itemC.key)">
+                    <i class="fa-solid fa-arrow-up-9-1 color-text-admin text--10"></i>
+                    <i class="fa-regular fa-calendar-days color-text-admin text--10"></i>
+                  </button>
+
                   <!--                  button add level 3-->
                   <button class="btn-icon" @click="openModalAddLevel3(itemC.key)">
                     <i class="fa-solid fa-circle-plus  color-text-admin text--13 font--medium"></i>
@@ -711,6 +735,7 @@ export default {
         {name: 'Option list 6', value: 6},
       ],
       optionSelectFB: [],
+      isToggle: true,
     }
   },
   async created() {
@@ -721,9 +746,15 @@ export default {
       'dataTagDescription',
       'dataTagDescriptionLocal'
     ]),
+    ...mapState('FirebaseApi/product', [
+      'dataProduct'
+    ]),
     ...mapGetters('FirebaseApi/tagDescription', [
       '_dataTagDescription',
       '_dataTagDescriptionLocal'
+    ]),
+    ...mapGetters('FirebaseApi/product', [
+      '_dataProduct',
     ])
   },
   methods: {
@@ -734,6 +765,12 @@ export default {
     ...mapMutations('FirebaseApi/tagDescription', [
       'updateFormTagDes',
       'editFormTagDescription'
+    ]),
+    ...mapMutations('FirebaseApi/product', [
+      'sortNameDataProductLevel2',
+      'sortDateDataProductLevel2',
+      'sortNameDataProductLevel3',
+      'sortDateDataProductLevel3'
     ]),
     randomNumber,
     openModalEditLevel1(key) {
@@ -862,6 +899,22 @@ export default {
     },
     fnEmmitValueMultiselect(val){
       this.dataFormLevel3.tagDescription = val
+    },
+    sortNameProductLevel3(key){
+      this.sortNameDataProductLevel3({keyId: this.keyId, key: key, isToggle: this.isToggle })
+      this.isToggle = !this.isToggle
+    },
+    sortDateProductLevel3(key){
+      this.sortDateDataProductLevel3({keyId: this.keyId, key: key, isToggle: this.isToggle })
+      this.isToggle = !this.isToggle
+    },
+    sortNameProductLevel2(key){
+      this.sortNameDataProductLevel2({key: key, isToggle: this.isToggle})
+      this.isToggle = !this.isToggle
+    },
+    sortDateProductLevel2(key){
+      this.sortDateDataProductLevel2({key: key, isToggle: this.isToggle})
+      this.isToggle = !this.isToggle
     }
   },
   watch: {

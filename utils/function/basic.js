@@ -1,8 +1,8 @@
-
 const formatter = new Intl.NumberFormat('en-US', {
   style: 'currency',
   currency: 'USD',
 });
+
 export function handlesIcon(val) {
   return ('text--' + (val.split('--')[1] - 2));
 }
@@ -15,23 +15,36 @@ export function handelTextContentModalDelete(val) {
   `
 }
 
-export function randomNumber(val){
-  switch (val){
-    case 'rate':{
+export function randomNumber(val) {
+  switch (val) {
+    case 'rate': {
       return (Math.random() * (500 - 100) + 100).toFixed();
     }
-    case 'star':{
+    case 'star': {
       return (Math.random() * (5 - 3) + 3).toFixed(2);
     }
-    case 'price-old':{
-      return (Math.random() * (900 - 300) + 300).toFixed()*1000
+    case 'price-old': {
+      return (Math.random() * (900 - 300) + 300).toFixed() * 1000
     }
-    case 'discount':{
+    case 'discount': {
       return (Math.random() * (20 - 1) + 1).toFixed()
     }
   }
 }
 
-export function formatCurrency(val){
+export function formatCurrency(val) {
   return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+}
+
+export function sortFn(arr, type) {
+  switch (type) {
+    case 'date':
+      return arr.sort((a, b) => new Date(b.createDate) - new Date(a.createDate));
+    case 'dateRev':
+      return arr.sort((a, b) => new Date(a.createDate) - new Date(b.createDate));
+    case 'name':
+      return arr.sort((a, b) => b.name.localeCompare(a.name));
+    case 'nameRev':
+      return arr.sort((a, b) => a.name.localeCompare(b.name));
+  }
 }

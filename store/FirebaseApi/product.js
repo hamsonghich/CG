@@ -1,6 +1,7 @@
 // nuxtjs vuex
 import firebase from "@/plugins/Firebase";
 import {convertDataFirebase} from "@/utils/Firebase/convert";
+import {sortFn} from "@/utils/function/basic";
 
 export const state = () => ({
   dataProduct: []
@@ -16,19 +17,81 @@ export const mutations = {
   },
   sortNameDataProduct(_state, _payload){
     if(_payload){
-      _state.dataProduct.sort((a, b) => a.name.localeCompare(b.name));
+      sortFn(_state.dataProduct, 'name')
     }else{
-      _state.dataProduct.sort((a, b) => b.name.localeCompare(a.name));
+      sortFn(_state.dataProduct, 'nameRev')
     }
   },
   sortDateDataProduct(_state, _payload){
     if(_payload){
-      _state.dataProduct.sort((a, b) => new Date(b.createDate) - new Date(a.createDate));
+      sortFn(_state.dataProduct, 'date')
     }else{
-      _state.dataProduct.sort((a, b) => new Date(a.createDate) - new Date(b.createDate));
+      sortFn(_state.dataProduct, 'dateRev')
     }
 
-  }
+  },
+
+  sortNameDataProductLevel2(_state, _payload){
+    _state.dataProduct = _state.dataProduct.map(item => {
+      if(item.key === _payload.key){
+        if(_payload.isToggle){
+          return {...item,'product-sub': sortFn(item['product-sub'],'name')}
+        }else{
+          return {...item,'product-sub': sortFn(item['product-sub'],'nameRev')}
+        }
+
+      }else{
+        return item
+      }
+    })
+  },
+  sortDateDataProductLevel2(_state, _payload){
+    _state.dataProduct = _state.dataProduct.map(item => {
+      if(item.key === _payload.key){
+        if(_payload.isToggle){
+          return {...item,'product-sub': sortFn(item['product-sub'],'date')}
+        }else{
+          return {...item,'product-sub': sortFn(item['product-sub'],'dateRev')}
+        }
+
+      }else{
+        return item
+      }
+    })
+  },
+
+  sortNameDataProductLevel3(_state, _payload){
+   _state.dataProduct = _state.dataProduct.map(item => {
+      if(item.key === _payload.keyId){
+        return {...item, 'product-sub': item['product-sub'].map(itemC => {
+          if(itemC.key === _payload.key){
+            if(_payload.isToggle){
+              return {...itemC, 'product-details': sortFn(itemC['product-details'], 'name')}
+            }else{
+              return {...itemC, 'product-details': sortFn(itemC['product-details'], 'nameRev')}
+            }
+          }else return itemC
+          })}
+      }else return item
+    })
+  },
+
+  sortDateDataProductLevel3(_state, _payload){
+    _state.dataProduct = _state.dataProduct.map(item => {
+      if(item.key === _payload.keyId){
+        return {...item, 'product-sub': item['product-sub'].map(itemC => {
+            if(itemC.key === _payload.key){
+              if(_payload.isToggle){
+                return {...itemC, 'product-details': sortFn(itemC['product-details'], 'date')}
+              }else{
+                return {...itemC, 'product-details': sortFn(itemC['product-details'], 'dateRev')}
+              }
+            }else return itemC
+          })}
+      }else return item
+    })
+  },
+
 }
 
 export const actions = {
