@@ -83,12 +83,10 @@ export default {
   methods: {
 
     onSelectEvent(value) {
-      console.log('value', value)
       this.$emit('valueSelected', value)
     },
     handleKeydown(event) {
       if (event.keyCode === KEYCODE_ENTER) {
-        console.log('search')
         this.$emit('valueSelected', event)
       }
     },

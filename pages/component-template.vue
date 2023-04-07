@@ -16,7 +16,7 @@
             :errorText="'Mật khẩu không đúng định dạng'"
             :prepend-option="false"
             :append-option="true"
-            @valueInput="fnValueInput"
+            @valueInputEmit="fnValueInput"
             :float-label="'Mật khẩu'"
           />
           <ButtonWebComponent
@@ -37,7 +37,7 @@
                       :errorText=&quot;&#39;Mật khẩu không đúng định dạng&#39;&quot;
                       :prepend-option=&quot;false&quot;
                       :append-option=&quot;true&quot;
-                      @valueInput=&quot;fnValueInput&quot;
+                      @valueInputEmit=&quot;fnValueInput&quot;
                       :float-label=&quot;&#39;Mật khẩu&#39;&quot;
                    /&gt;
                </code>
@@ -50,7 +50,7 @@
             :option-input="''"
             :placeholder="'Nhập tên đăng nhập'"
             :prepend-option="true"
-            @valueInput="fnValueInput"
+            @valueInputEmit="fnValueInput"
             :float-label="'Tên đăng nhập'"
             icon-prepend="fa-solid fa-lock"
           />
@@ -71,7 +71,7 @@
                     :option-input=&quot;&#39;&#39;&quot;
                     :placeholder=&quot;&#39;Nhập tên đăng nhập&#39;&quot;
                     :prepend-option=&quot;true&quot;
-                    @valueInput=&quot;fnValueInput&quot;
+                    @valueInputEmit=&quot;fnValueInput&quot;
                     :float-label=&quot;&#39;Tên đăng nhập&#39;&quot;
                     icon-prepend=&quot;fa-solid fa-lock&quot;
                  /&gt;
@@ -86,7 +86,7 @@
             :placeholder="'Nhập từ khóa'"
             :prepend-option="false"
             :append-option="true"
-            @valueInput="fnValueInput"
+            @valueInputEmit="fnValueInput"
             :float-label="'Nhập từ khóa'"
             icon-prepend="fa-solid fa-lock"
           />
@@ -108,7 +108,7 @@
                   :placeholder=&quot;&#39;Nhập từ khóa&#39;&quot;
                   :prepend-option=&quot;false&quot;
                   :append-option=&quot;true&quot;
-                  @valueInput=&quot;fnValueInput&quot;
+                  @valueInputEmit=&quot;fnValueInput&quot;
                   :float-label=&quot;&#39;Nhập từ khóa&#39;&quot;
                   icon-prepend=&quot;fa-solid fa-lock&quot;
                 /&gt;
@@ -755,22 +755,29 @@ export default {
       ]
     }
   },
+  head(){
+    return{
+      meta: [
+        {name:"description" , content: "Free Web tutorials"}
+      ]
+    }
+  },
   methods: {
     fnValueInput(value) {
       this.valueInputTemplate = value
     },
     getValueInputTemplate() {
-      console.log(this.valueInputTemplate)
+
     },
     fnBtn(value) {
       this.choose = value
     },
     fnCurrentEmmit(event) {
-      console.log('event', event)
+
       this.currentPagePick = event
     },
     getValueSelected(event) {
-      console.log('value selected autocomplete = ', event)
+
     },
     emmitClickBtn(emmit) {
       console.log('emmit', emmit)

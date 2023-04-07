@@ -13,6 +13,21 @@ export const getters = {
 export const mutations = {
   SET_DATA_PRODUCT(_state, _payload) {
     _state.dataProduct = _payload
+  },
+  sortNameDataProduct(_state, _payload){
+    if(_payload){
+      _state.dataProduct.sort((a, b) => a.name.localeCompare(b.name));
+    }else{
+      _state.dataProduct.sort((a, b) => b.name.localeCompare(a.name));
+    }
+  },
+  sortDateDataProduct(_state, _payload){
+    if(_payload){
+      _state.dataProduct.sort((a, b) => new Date(b.createDate) - new Date(a.createDate));
+    }else{
+      _state.dataProduct.sort((a, b) => new Date(a.createDate) - new Date(b.createDate));
+    }
+
   }
 }
 

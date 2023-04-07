@@ -24,5 +24,10 @@ firebase.database().ref(`${params}/` + id).set(postData, (error) => {
 }
 
 export const deleteDataFirebase = (params, id) => {
-  firebase.database().ref(`${params}/`+ id).remove()
+  if(id === null){
+    firebase.database().ref(`${params}`)?.remove()
+  }else{
+    firebase.database().ref(`${params}/`+ id)?.remove()
+  }
+
 }

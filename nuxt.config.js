@@ -31,6 +31,7 @@ export default {
   plugins: [
     '~/plugins/Firebase/index.js',
     '~/plugins/Component/InputWebComponent.js',
+    '~/plugins/Component/InputCurrencyWebComponent.js',
     '~/plugins/Component/PaginationWebComponent.js',
     '~/plugins/Component/AutocompleteWebComponent.js',
     '~/plugins/Component/vue-simple-suggest',
@@ -39,8 +40,10 @@ export default {
     '~/plugins/Component/SelectWebComponent.js',
     '~/plugins/Component/StarWebComponent.js',
     '~/plugins/Component/CardDetailWebComponent.js',
-    '~/plugins/Component/ModalYNWebComponent.js',
+    '~/plugins/Component/ModalDeleteWebComponent.js',
     '~/plugins/Component/AccordionAdminWebComponent.js',
+    '~/plugins/Component/vue-multiselect.js',
+    '~/plugins/Component/MultiselectWebComponent.js',
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -57,6 +60,7 @@ export default {
     'bootstrap-vue/nuxt',
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
+    'vue2-editor/nuxt'
   ],
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {

@@ -32,5 +32,22 @@ $color-text-admin-white: white;
 *{
   color: $color-text-black;
 }
-
+.color-primary{
+  color: $color-primary !important;
+}
+.color-text-warning{
+  color: $color-text-danger !important;
+}
+.color-text-orange{
+  color: $color-text-warning !important;
+}
+.color-text-primary{
+  color: $color-text-primary !important;
+}
+.color-text-orange{
+ color: $color-text-orange;
+}
+.color-text-admin{
+ color: $color-text-admin;
+}
 

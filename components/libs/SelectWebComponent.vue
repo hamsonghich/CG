@@ -43,7 +43,9 @@ export default {
     }
   },
   created(){
+
     this.options = [ { [this.textField]: '-- Please select some item --',  [this.valueField]: null , disabled: true}, ...this.options]
+
   },
   watch:{
     'selected':function (){

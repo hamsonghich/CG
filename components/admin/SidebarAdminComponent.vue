@@ -208,7 +208,7 @@
 import {mapActions, mapGetters, mapState} from "vuex";
 import {convertLinkUtils, handelClassIcon} from "@/utils/Firebase/convert";
 import {deleteDataFirebase, postDataFirebase, setDataFirebase} from "@/utils/Firebase/api";
-import ModalYNWebComponent from "@/components/libs/ModalYNWebComponent.vue";
+import ModalYNWebComponent from "@/components/libs/ModalDeleteWebComponent.vue";
 
 export default {
   components: {ModalYNWebComponent},
@@ -222,7 +222,6 @@ export default {
   },
   async created() {
     await this.getDataSidebarFirebase()
-    console.log(this._dataSidebarFirebase)
     this.dataSidebarFirebaseLocal = this._dataSidebarFirebase;
   },
   computed: {
@@ -238,18 +237,16 @@ export default {
     handelClassIcon, convertLinkUtils,
     ...mapActions('FirebaseApi/sidebarAmin', [
       'getDataSelected',
-      'getDataSidebarFirebase'
+      'getDataSidebarFirebase',
     ]),
     getSideBarItem(emmit) {
       this.getDataSelected(emmit)
     },
     editSideBarItem(emmit) {
-      console.log('emmit', emmit)
       this.$refs?.['modal-edit']?.show()
       this.formEditItem = [...this.dataSidebarFirebaseLocal]?.find(item => {
         return item?.link === emmit
       })
-      console.log('formEditItem', this.formEditItem)
     },
     deleteSideBarItem(key) {
       this.$refs?.['modal-delete']?.show()
@@ -260,17 +257,14 @@ export default {
       this.$refs?.['modal-delete']?.hide()
     },
     valueInputEmitAddName(value) {
-      console.log('value add', value)
       this.formAddItem.name = value
       this.formAddItem.link = convertLinkUtils(value)
     },
     fnValueInputEditName(value) {
-      console.log('value edit', value)
       this.formEditItem.name = value
       this.formEditItem.link = convertLinkUtils(value)
     },
     fnValueInputIcon(value) {
-      console.log('value icon', value)
       this.formAddItem.icon = value
     },
     fnValueInputEditIcon(value) {

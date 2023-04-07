@@ -57,3 +57,10 @@ export function handelClassIcon(val) {
 
 }
 
+export function handleTagDes(mess){
+  let temp =  Object.values(mess).map((item, index) => {
+    return (Object.values(item))
+  })[0]
+  return temp.slice(0, temp.length -1)
+}
+

@@ -58,11 +58,11 @@ export default {
     }
   },
   async created() {
-    console.log('created here')
+
     await this.getDataProduct();
-    console.log(this.dataProduct)
+
     this.dataProductDetailTest = this.dataProduct?.[0]?.['product-sub']?.[0]?.['product-details']?.[0]
-    console.log('dataProductDetailTest', this.dataProductDetailTest)
+
   },
   computed:{
     ...mapState('FirebaseApi/product', [

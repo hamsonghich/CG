@@ -64,7 +64,7 @@ export default {
   },
   watch: {
     'currentPage': function () {
-      console.log('emmit', this.currentPage)
+
       this.$emit('currentEmmit', this.currentPage)
     }
   }
